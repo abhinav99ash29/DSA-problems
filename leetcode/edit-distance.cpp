@@ -3,11 +3,11 @@ public:
     
     int rec(string& word1, string& word2, int i, int j, vector<vector<int>>& dp) {
         
-        if (i>=word1.size()) {
+        if (i==word1.size()) {
             return word2.size()-j;
         }
         
-        if (j>=word2.size()) {
+        if (j==word2.size()) {
             return word1.size()-i;
         }
         
@@ -15,7 +15,7 @@ public:
             return dp[i][j];
         
         if (word1[i]==word2[j]) {
-            return rec(word1, word2, i+1, j+1,dp);
+            return dp[i][j] = rec(word1, word2, i+1, j+1,dp);
         }
         
         int replace = rec(word1,word2,i+1,j+1,dp);
